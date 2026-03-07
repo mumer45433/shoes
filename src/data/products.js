@@ -14,7 +14,7 @@ export const products = [
   },
   {
     id: 2,
-    name: "Black Running Sneakers",
+    name: "Blacck Running Sneakers",
     price: 7800,
     brand: "Adidas",
     color: "Black",
@@ -92,28 +92,5 @@ export const products = [
     category: "Casual",
     image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=400",
     description: "Comfortable street casual shoes",
-  },
-  {
-    id: 9,
-    name: "Minimal White Sneakers",
-    price: 8900,
-    brand: "Nike",
-    color: "White",
-    size: ["40", "41", "42"],
-    category: "Sneakers",
-    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400",
-    description: "Minimal design white sneakers",
-  },
-  
-  {
-    id: 10,
-    name: "Minimal White Sneakers",
-    price: 8900,
-    brand: "Nike",
-    color: "White",
-    size: ["40", "41", "42"],
-    category: "Sneakers",
-    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400",
-    description: "Minimal design white sneakers",
   },
 ];
