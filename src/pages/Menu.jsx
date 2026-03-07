@@ -2,22 +2,17 @@ import { useState, useEffect } from "react";
 import { api } from "../utils/api";
 import ProductCard from "../components/ProductCard";
 import FilterSidebar from "../components/FilterSidebar";
+import { products as initialProducts } from "../data/products";
 
 export default function Menu() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const [selectedBrand, setSelectedBrand] = useState("All");
   const [selectedColor, setSelectedColor] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await api.fetchProducts();
-      setProducts(data);
-    };
-    fetchData();
-  }, []);
+ 
 
   const filteredProducts = products.filter((p) => {
     const matchCategory = selectedCategory === "All" || p.category === selectedCategory;

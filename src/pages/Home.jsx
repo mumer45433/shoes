@@ -3,6 +3,7 @@ import { api } from "../utils/api";
 import ProductCard from "../components/ProductCard";
 import { useCartStore } from "../store/cartStore";
 import { useNavigate } from "react-router-dom";
+import { products as initialProducts } from "../data/products";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -15,17 +16,10 @@ export default function Home() {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await api.fetchProducts();
-      setProducts(data);
-    };
-    fetchData();
-  }, []);
-
+ 
   useEffect(() => {
     const interval = setInterval(() => setCurrentSlide((prev) => (prev + 1) % banners.length), 4000);
     return () => clearInterval(interval);
