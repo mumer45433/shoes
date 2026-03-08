@@ -40,12 +40,14 @@ export default function CartDrawer() {
               {cartItems.length}
             </span>
           </div>
-          <button 
-            onClick={() => setCartOpen(false)} 
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 transition"
-          >
-            ✕
-          </button>
+       {/* ✅ Updated Close Button: Bada size aur behtar touch target */}
+  <button 
+    onClick={() => setCartOpen(false)} 
+    className="w-12 h-12 -mr-2 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-500 active:bg-gray-200 transition-all"
+    aria-label="Close Cart"
+  >
+    <span className="text-2xl font-light">✕</span> 
+  </button>
         </div>
 
         {/* Cart Items List - Area height maximized */}
