@@ -4,7 +4,7 @@ export default function Orders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5001/orders")
+    fetch("https://shoies-api.vercel.app/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .catch((err) => console.error(err));
