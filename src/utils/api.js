@@ -1,4 +1,4 @@
-const BASE_URL = "https://shoback.vercel.app/";
+const BASE_URL = "https://shoback.vercel.app";
 
 export const api = {
   fetchProducts: async () => {
