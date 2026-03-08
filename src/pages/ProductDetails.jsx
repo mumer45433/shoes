@@ -1,11 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { api } from "../utils/api";
-import { useCartStore } from "../store/cartStore";
+ import { useCartStore } from "../store/cartStore";
 import ProductCard from "../components/ProductCard";
 import toast from "react-hot-toast";
-
-export default function ProductDetails() {
+import { products as localProducts } from "../data/products"; // ✅ Local data import karein
+ export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -15,16 +14,19 @@ export default function ProductDetails() {
   const [wishlisted, setWishlisted] = useState(false);
   const [mainImage, setMainImage] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await api.fetchProducts();
-      setAllProducts(data);
-
-      const foundProduct = data.find((p) => p.id === Number(id));
+useEffect(() => {
+    // 1. Pehle pura local data set karein taake Related Products chal sakein
+    setAllProducts(localProducts); 
+    
+    // 2. Phir current product find karein
+    const foundProduct = localProducts.find((p) => p.id === Number(id));
+    
+    if (foundProduct) {
       setProduct(foundProduct);
-      if (foundProduct) setMainImage(foundProduct.image);
-    };
-    fetchData();
+      setMainImage(foundProduct.image);
+      // Scroll to top (Optional but good for UX jab user related product pe click kare)
+      window.scrollTo(0, 0); 
+    }
   }, [id]);
 
   if (!product) return <p className="text-center py-10">Loading...</p>;
